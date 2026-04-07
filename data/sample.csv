@@ -1,0 +1,4 @@
+user_id,amount,currency,date
+1,100,usd,2024-01-01
+2,200,USD,2024/01/02
+3,invalid,USD,2024-01-03
