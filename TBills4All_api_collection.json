@@ -1,0 +1,452 @@
+ {
+  "info": {
+    "name": "Customer API Collection (Secure)",
+    "description": "Postman collection including API key, secret, and HMAC signature headers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "client_id": "GH1234567890",
+            "customer_name": "Kwame Mensah",
+            "msisdn": "233201234567",
+            "email": "kwame.mensah@example.com",
+            "trace_id": "trace-20250623-001"
+          }
+        },
+        "url": {
+          "raw": "https://<base_ip_or_domain>/register",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["register"]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Registration completed successfully",
+            "trace_id": "trace-20250623-001",
+            "response_id": "RES123456789"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+   {
+      "name": "Get Customer Info",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "url": {
+          "raw": "https://<base_ip_or_domain>/info?client_id=GH1234567890&trace_id=trace-20250623-002",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["info"],
+          "query": [
+            { "key": "client_id", "value": "GH1234567890" },
+            { "key": "trace_id", "value": "trace-20250623-002" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "client_id": "GH1234567890",
+            "customer_name": "Kwame Mensah",
+            "registration_date": "23-JUN-2025",
+            "msisdn": [
+              { "value": "233201234567" },
+              { "value": "233207654321" }
+            ],
+            "email": "kwame.mensah@example.com",
+            "status": "Active",
+            "trace_id": "trace-20250623-002",
+            "response_id": "RES0987654321"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Update Customer Info",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "client_id": "GH1234567890",
+            "customer_name": "Kwame Mensah",
+            "msisdn": "233201234567",
+            "email": "kwame.mensah@newmail.com",
+            "comments": "Corrected email address",
+            "trace_id": "trace-20250623-003"
+          }
+        },
+        "url": {
+          "raw": "https://<base_ip_or_domain>/update",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["update"]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Customer details updated successfully",
+            "trace_id": "trace-20250623-003",
+            "response_id": "RES1122334455"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get Securities",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "url": {
+          "raw": "https://<base_ip_or_domain>/securities?trace_id=trace-20250623-004",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["securities"],
+          "query": [
+            { "key": "trace_id", "value": "trace-20250623-004" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Securities list retrieved",
+            "available_securities": [
+              { "security_code": "91", "security_type": "91-DAYS", "rate": "23.06" },
+              { "security_code": "182", "security_type": "182-DAYS", "rate": "24.01" }
+            ],
+            "trace_id": "trace-20250623-004",
+            "response_id": "RES5566778899"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get Active Bills",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "url": {
+          "raw": "https://<base_ip_or_domain>/activebills?client_id=GH1234567890&msisdn=233244111111&trace_id=trace-20250623-005",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["activebills"],
+          "query": [
+            { "key": "client_id", "value": "GH1234567890" },
+            { "key": "msisdn", "value": "233244111111" },
+            { "key": "trace_id", "value": "trace-20250623-005" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Active securities retrieved successfully",
+            "securities": [
+              {
+                "msisdn": "233244111111",
+                "transaction_id": "0001",
+                "type": "182-Days",
+                "purchased_on": "01-SEP-2024",
+                "maturity_date": "02-MAR-2025",
+                "rate": "23.5",
+                "face_value": "5.00",
+                "cost": "4.95",
+                "status": "running",
+                "rediscount_rate": "4.20",
+                "rediscount_val": "4.6",
+                "maturity_val": "5.1",
+                "nok": "kofi yaw",
+                "nok_con": "0233444333"
+              },
+              {
+                "msisdn": "233244111112",
+                "transaction_id": "0031",
+                "type": "91-Days",
+                "purchased_on": "21-JAN-2025",
+                "maturity_date": "12-APR-2025",
+                "rate": "17.5",
+                "face_value": "15.00",
+                "cost": "14.95",
+                "status": "running",
+                "rediscount_rate": "17.20",
+                "rediscount_val": "14.6",
+                "maturity_val": "15.1",
+                "nok": "kofi yaw",
+                "nok_con": "0233444333"
+              }
+            ],
+            "trace_id": "trace-20250623-005",
+            "response_id": "RES6677889900"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Simulate Buy",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "security_code": 91,
+            "amount": 1000.00,
+            "cost": 1000.00,
+            "trace_id": "trace-20250623-006",
+            "invst_type": "c"
+          }
+        },
+        "url": {
+          "raw": "https://<base_ip_or_domain>/simulatebuy",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["simulatebuy"]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Simulation completed",
+            "trace_id": "trace-20250623-006",
+            "response_id": "RES7788990011"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Buy Treasury Bill",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "security_code": 91,
+            "client_id": "GH1234567890",
+            "msisdn": "233244111111",
+            "amount": 1000.00,
+            "cost": 1000.00,
+            "trace_id": "trace-20250623-007",
+            "transaction_id": "txn-20250623-007",
+            "invst_type": "c",
+            "nok": "Kofi Yaw",
+            "nok_con": "233233334444",
+            "nok_email": "kofi.yaw@example.com"
+          }
+        },
+        "url": {
+          "raw": "https://<base_ip_or_domain>/buy",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["buy"]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Purchase completed successfully",
+            "trace_id": "trace-20250623-007",
+            "response_id": "RES8899001122"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rediscount Security",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "client_id": "GH1234567890",
+            "transaction_id": "txn-20250623-007",
+            "trace_id": "trace-20250623-008"
+          }
+        },
+        "url": {
+          "raw": "https://<base_ip_or_domain>/rediscount",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["rediscount"]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Rediscount processed successfully",
+            "trace_id": "trace-20250623-008",
+            "transaction_id": "txn-20250623-007"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get Statement",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "client_id": "GH1234567890",
+            "trace_id": "trace-20250623-009"
+          }
+        },
+        "url": {
+          "raw": "https://<base_ip_or_domain>/statement",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["statement"]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Statement generated for the past two years. See attached summary.",
+            "trace_id": "trace-20250623-009",
+            "response_id": "RES9900112233"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Check Transaction Status",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Content-Type", "value": "application/json", "type": "text" },
+          { "key": "X-API-KEY", "value": "demo-api-key-123", "type": "text" },
+          { "key": "X-SECRET", "value": "demo-secret-abc", "type": "text" },
+          { "key": "X-SIGNATURE", "value": "demo-signature-xyz", "type": "text" }
+        ],
+        "url": {
+          "raw": "https://<base_ip_or_domain>/status?client_id=GH1234567890&trace_id=trace-20250623-010&transaction_id=txn-20250623-007",
+          "protocol": "https",
+          "host": ["<base_ip_or_domain>"],
+          "path": ["status"],
+          "query": [
+            { "key": "client_id", "value": "GH1234567890" },
+            { "key": "trace_id", "value": "trace-20250623-010" },
+            { "key": "transaction_id", "value": "txn-20250623-007" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "body": {
+            "status": "success",
+            "status_code": "200",
+            "message": "Transaction is confirmed and completed",
+            "trace_id": "trace-20250623-010",
+            "transaction_id": "txn-20250623-007"
+          },
+          "header": [
+            { "key": "Content-Type", "value": "application/json" }
+          ]
+        }
+      ]
+    }
+  ]
+}
